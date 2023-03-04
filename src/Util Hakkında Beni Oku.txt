@@ -1,0 +1,11 @@
+
+Bu örnek dosya, com.example.sharedlibrary paketi altında, Util adlı bir sınıf tanımlar. Bu sınıf, getGreeting adında bir fonksiyon ve iki util fonksiyonu içerir: getJsonResponse, sendHttpPost ve toJson.
+
+getGreeting fonksiyonu, name adlı bir parametre alır ve bu parametreyi kullanarak bir selamlama mesajı oluşturur. Bu fonksiyon, sadece bir yapıyı anlamaya ve aşağıdaki request bazlı yapıların zorunlu olmadığına örnek olsun diye eklenmiştir.
+
+getJsonResponse fonksiyonu, bir URL'yi parametre olarak alır, bu URL'yi çağırır ve sonucu ayrıştırarak bir JSON nesnesi döndürür. Bu fonksiyon, JSON API'larıyla çalışırken kullanışlıdır.
+
+sendHttpPost fonksiyonu, bir URL ve bir payload string'i alır, bu payload'u JSON olarak dönüştürür ve bir HTTP POST isteği gönderir. Bu fonksiyon, JSON API'ları için bir HTTP isteği göndermek için kullanışlıdır. Örnek olarak işte bir comment yazmak istediğimizi düşünelim
+bir Jira id altına post ile onu gönderebiliriz.
+
+toJson yukarıda bahsettiğimiz Json dönüştürme işlemlerini yapar. 
