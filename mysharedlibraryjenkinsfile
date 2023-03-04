@@ -3,6 +3,13 @@
 pipeline {
     agent any
 
+        // Define environment variables
+    environment {
+        // Define Jira credentials
+        JIRA_USERNAME = credentials('jira-username')
+        JIRA_PASSWORD = credentials('jira-password')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -31,6 +38,24 @@ pipeline {
         stage('Tag Git repo') {
             steps {
                 tagGitRepo()
+
+
+ // Release stage
+        stage('Release') {
+            steps {
+                // Get resolved Jira issues
+                def issues = myJiraHelper.getResolvedIssues()
+
+                // Create release tag in Git
+                sh "git tag -a v1.0 -m 'Release version 1.0'"
+                sh 'git push --tags'
+
+                // Close Jira issues
+                for (issue in issues) {
+                    myJiraHelper.closeIssue(issue.key)
+                }
+            }
+        }
             }
         }
     }
