@@ -1,0 +1,37 @@
+@Library('my-shared-library') _
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkoutGit()
+            }
+        }
+
+        stage('SonarQube analysis') {
+            steps {
+                sonarqubeAnalysis()
+            }
+        }
+
+        stage('Build and Package') {
+            steps {
+                buildAndPackage()
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                deploy()
+            }
+        }
+
+        stage('Tag Git repo') {
+            steps {
+                tagGitRepo()
+            }
+        }
+    }
+}
